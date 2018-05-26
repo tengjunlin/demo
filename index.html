@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>档案馆</title>
+	<link rel="stylesheet" type="text/css" href="../css/danganguan.css">
+	<script src="http://libs.baidu.com/jquery/1.11.3/jquery.min.js"></script>
+	<script type="text/javascript">
+
+        window.onload = function () {
+            var container = document.getElementById('container');
+            var list = document.getElementById('list');
+            var prev = document.getElementById('prev');
+            var next = document.getElementById('next');
+            var index = 1;
+            var len = 3;
+            var animated = false;
+            var interval = 5880;
+            var timer;
+
+
+            function animate (offset) {
+                if (offset == 0) {
+                    return;
+                }
+                animated = true;
+                var time = 980;
+                var inteval = 5;
+                var speed = offset/(time/inteval);
+                var left = parseInt(list.style.left) + offset;
+
+                var go = function (){
+                    if ( (speed > 0 && parseInt(list.style.left) < left) || (speed < 0 && parseInt(list.style.left) > left)) {
+                        list.style.left = parseInt(list.style.left) + speed + 'px';
+                        setTimeout(go, inteval);
+                    }
+                    else {
+                        list.style.left = left + 'px';
+                        if(left>-1500){
+                            list.style.left = -1960 * len + 'px';
+                        }
+                        if(left<(-1960 * len)) {
+                            list.style.left = '-1960px';
+                        }
+                        animated = false;
+                    }
+                }
+                go();
+            }
+
+
+            function play() {
+                timer = setTimeout(function () {
+                    next.onclick();
+                    play();
+                }, interval);
+            }
+            function stop() {
+                clearTimeout(timer);
+            }
+
+            next.onclick = function () {
+                if (animated) {
+                    return;
+                }
+                if (index == 3) {
+                    index = 1;
+                }
+                else {
+                    index += 1;
+                }
+                animate(-1960);
+            }
+            prev.onclick = function () {
+                if (animated) {
+                    return;
+                }
+                if (index == 1) {
+                    index = 3;
+                }
+                else {
+                    index -= 1;
+                }
+                animate(1960);
+            }
+
+
+            container.onmouseover = stop;
+            container.onmouseout = play;
+
+            play();
+
+        }
+    </script>
+</head>
+<body>
+	<div id="top">
+		<ul>
+			<li class="top_1"><img src="../img/dbsd.png"></li>
+			<li class="top_2"><img src="../img/img_1.png"></li>
+			<li class="top_3"><a href="#"> </a></li>
+		</ul>
+		<div id="search">
+			<div class="searchtext">
+				<a href="#">本馆位置</a>
+				|
+				<a href="#">开放时间</a>
+				|
+				<a href="#">联系我们</a>
+				|
+				<a href="#">服务评测</a>
+				|
+				<a href="#">下载专区</a>
+			</div>
+		</div>
+		<form>
+			<input name="showkeycode" id="showkeycode190860" value="站内搜索" class="swap_value" onfocus="if(this.value=='站内搜索'){this.value='';}" onblur="if(this.value==''){this.value='站内搜索';}" type="text">
+			<input src="../img/go.png" class="go" alt="Search" title="Search" type="image">
+		</form>
+		<div id="site">
+			<a href="#" class="text1">网站首页</a>
+			<span>|</span>
+			<a href="#" class="text2">关于我们</a>
+			<span>|</span>
+			<a href="#" class="text2">法律法规</a>
+			<span>|</span>
+			<a href="#" class="text2">立卷归档</a>
+			<span>|</span>
+			<a href="#" class="text2">馆藏资源</a>
+			<span>|</span>
+			<a href="#" class="text2">服务大厅</a>
+			<span>|</span>
+			<a href="#" class="text2">档案编研</a>
+			<span>|</span>
+			<a href="#" class="text2">档案捐赠</a>
+			<span>|</span>
+			<a href="#" class="text2">兰台文化</a>
+			<span>|</span>
+			<a href="#" class="text2">党建园地</a>
+		</div>
+	</div>
+<div id="container">
+    <div id="list" style="left: -1960px;">
+        <img src="../img/img0.png" width="1960" height="500"alt="1"/>
+        <img src="../img/img0.png" width="1960" height="500"alt="1"/>
+        <img src="../img/img0.png" width="1960" height="500"alt="2"/>
+        <img src="../img/img0.png" width="1960" height="500"alt="3"/>
+        <img src="../img/img0.png" width="1960" height="500"alt="3"/>
+    </div>
+    <a href="javascript:;" id="prev" class="arrow">&lt;</a>
+    <a href="javascript:;" id="next" class="arrow">&gt;</a>
+</div>
+<div class="box">
+  <div class="winBox">
+    <ul class="scroll">
+      <li><a href="#">●2018-1-1历史上的今天请输入滚动文字内容</a></li>
+      <li><a href="#">●2018-1-1历史上的今天请输入滚动文字内容</a></li>
+      <li><a href="#">●2018-1-1历史上的今天请输入滚动文字内容</a></li>
+      <li><a href="#">●2018-1-1历史上的今天请输入滚动文字内容</a></li>
+      <li><a href="#">●2018-1-1历史上的今天请输入滚动文字内容</a></li>
+      <!--给所要的内容复制一份-->
+      <li><a href="#">●2018-1-1历史上的今天请输入滚动文字内容</a></li>
+      <li><a href="#">●2018-1-1历史上的今天请输入滚动文字内容</a></li>
+      <li><a href="#">●2018-1-1历史上的今天请输入滚动文字内容</a></li>
+      <li><a href="#">●2018-1-1历史上的今天请输入滚动文字内容</a></li>
+      <li><a href="#">●2018-1-1历史上的今天请输入滚动文字内容</a></li>
+    </ul>
+  </div>
+  	<script>
+		$(function() {
+		    var num = 0;
+		    function goLeft() {
+		        //750是根据你给的尺寸，可变的
+		        if (num == -800) {
+		            num = 0;
+		        }
+		        num -= 1;
+		        $(".scroll").css({
+		            left: num
+		        })
+		    }
+		    //设置滚动速度
+		    var timer = setInterval(goLeft, 10);
+		    //设置鼠标经过时滚动停止
+		    $(".box").hover(function() {
+		        clearInterval(timer);
+		    },
+		    function() {
+		        timer = setInterval(goLeft, 10);
+		    })
+		})
+	</script>
+</div>
+<div id="content">
+	<div class="search2">
+		<div class="search2_4">
+			<img src="../img/sousuo1.png" width="24" height="24" class="search2_4-1">
+			<span class="search2_4-2">|</span>
+		</div>
+		<input name="showkeycode" value="请输入搜索信息" class="search2_1" onfocus="if(this.value=='请输入搜索信息'){this.value='';}" onblur="if(this.value==''){this.value='请输入搜索信息';}" type="text">
+		<input src="../img/ss.png" class="search2_2" alt="Search" title="Search" type="image">
+		<div class="search2_5"><a href="#">搜索</a></div>
+		<div class="search2_6">
+			<img src="../img/bz.png">
+			<a href="#">帮助</a>
+		</div>
+	</div>
+	<div class="tongzhi">
+		<img src="../img/tz.png" class="tz_1">
+		<p class="tz_2">通知公告</p>
+		<img src="../img/jt.png" class="tz_3">
+		<a href="#" class="tz_4">更多</a>
+		<img src="../img/xt.png" class="tz_5">
+		<ul class="tz_6">
+			<li>
+				<a href="#" class="tz_6-1">请输入内容请输入内容请输入内容请输入内容请输入内容请输入……</a>
+				<a href="#" class="tz_6-2">2018-01-01</a>
+				<span class="tz_6-3">··············································································································································································································································</span>
+			</li>
+			<li>
+				<a href="#" class="tz_6-4">请输入内容请输入内容请输入内容请输入内容请输入内容请输入……</a>
+				<a href="#" class="tz_6-5">2018-01-01</a>
+				<span class="tz_6-3">··············································································································································································································································</span>
+			</li>
+			<li>
+				<a href="#" class="tz_6-4">请输入内容请输入内容请输入内容请输入内容请输入内容请输入……</a>
+				<a href="#" class="tz_6-5">2018-01-01</a>
+				<span class="tz_6-3">··············································································································································································································································</span>
+			</li>
+			<li>
+				<a href="#" class="tz_6-4">请输入内容请输入内容请输入内容请输入内容请输入内容请输入……</a>
+				<a href="#" class="tz_6-5">2018-01-01</a>
+				<span class="tz_6-3">··············································································································································································································································</span>
+			</li>
+			<li>
+				<a href="#" class="tz_6-4">请输入内容请输入内容请输入内容请输入内容请输入内容请输入……</a>
+				<a href="#" class="tz_6-5">2018-01-01</a>
+				<span class="tz_6-3">··············································································································································································································································</span>
+			</li>
+			<li>
+				<a href="#" class="tz_6-4">请输入内容请输入内容请输入内容请输入内容请输入内容请输入……</a>
+				<a href="#" class="tz_6-5">2018-01-01</a>
+				<span class="tz_6-3">··············································································································································································································································</span>
+			</li>
+			<li>
+				<a href="#" class="tz_6-4">请输入内容请输入内容请输入内容请输入内容请输入内容请输入……</a>
+				<a href="#" class="tz_6-5">2018-01-01</a>
+				<span class="tz_6-3">··············································································································································································································································</span>
+			</li>
+		</ul>
+	</div>
+	<div class="tongzhi">
+		<img src="../img/xw.png" class="tz_1-1">
+		<p class="tz_2-1">新闻快讯</p>
+		<img src="../img/jt.png" class="tz_3-1">
+		<a href="#" class="tz_4-1">更多</a>
+		<img src="../img/xt.png" class="tz_5-1">
+	</div>
+	<ul class="tz_6_1">
+			<li>
+				<a href="#" class="tz_6-1">请输入内容请输入内容请输入内容请输入内容请输入内容请输入……</a>
+				<a href="#" class="tz_6-2">2018-01-01</a>
+				<span class="tz_6-3">··············································································································································································································································</span>
+			</li>
+			<li>
+				<a href="#" class="tz_6-4">请输入内容请输入内容请输入内容请输入内容请输入内容请输入……</a>
+				<a href="#" class="tz_6-5">2018-01-01</a>
+				<span class="tz_6-3">··············································································································································································································································</span>
+			</li>
+			<li>
+				<a href="#" class="tz_6-4">请输入内容请输入内容请输入内容请输入内容请输入内容请输入……</a>
+				<a href="#" class="tz_6-5">2018-01-01</a>
+				<span class="tz_6-3">··············································································································································································································································</span>
+			</li>
+			<li>
+				<a href="#" class="tz_6-4">请输入内容请输入内容请输入内容请输入内容请输入内容请输入……</a>
+				<a href="#" class="tz_6-5">2018-01-01</a>
+				<span class="tz_6-3">··············································································································································································································································</span>
+			</li>
+			<li>
+				<a href="#" class="tz_6-4">请输入内容请输入内容请输入内容请输入内容请输入内容请输入……</a>
+				<a href="#" class="tz_6-5">2018-01-01</a>
+				<span class="tz_6-3">··············································································································································································································································</span>
+			</li>
+			<li>
+				<a href="#" class="tz_6-4">请输入内容请输入内容请输入内容请输入内容请输入内容请输入……</a>
+				<a href="#" class="tz_6-5">2018-01-01</a>
+				<span class="tz_6-3">··············································································································································································································································</span>
+			</li>
+			<li>
+				<a href="#" class="tz_6-4">请输入内容请输入内容请输入内容请输入内容请输入内容请输入……</a>
+				<a href="#" class="tz_6-5">2018-01-01</a>
+				<span class="tz_6-3">··············································································································································································································································</span>
+			</li>
+		</ul>
+</div>
+<div id="content_2">
+	<div class="fwdt">
+		<img src="../img/fuwu.png" class="fw_1">
+		<span class="fw_2">服务大厅</span>
+		<img src="../img/fw.png" class="fw_3">
+		<span class="fw_4">个人业务</span>
+		<span class="fw_5">对公业务</span>
+		<img src="../img/xt2.png" class="fw_6">
+		<span class="fw_7">服务预约</span>
+		<span class="fw_8">在线办理</span>
+		<ul>
+			<li class="fw_9"><a href="#" class="wz">学生人事档案查阅</a></li>
+			<li class="fw_10"><a href="#" class="wz-1">教工人事档案查阅</a></li>
+			<li class="fw_10"><a href="#" class="wz-2">学籍<br>档案查阅</a></li>
+			<li class="fw_10"><a href="#" class="wz-3">党群类文书档案查阅</a></li>
+			<li class="fw_10"><a href="#" class="wz-4">行政类文书档案查阅</a></li>
+			<li class="fw_10"><a href="#"></a></li>
+			<li class="fw_11"><a href="#"></a></li>
+			<li class="fw_10"><a href="#" class="wz-5">学生调档</a></li>
+			<li class="fw_10"><a href="#" class="wz-6">出国翻译</a></li>
+			<li class="fw_10"><a href="#" class="wz-7">真题邮寄</a></li>
+		</ul>
+		<ul>
+			<li class="fw_12"><a href="#" class="wz-8">财会类文书档案查阅</a></li>
+			<li class="fw_13"><a href="#" class="wz-9">基建类文书档案查阅</a></li>
+			<li class="fw_13"><a href="#" class="wz-10">教学类文书档案查阅</a></li>
+			<li class="fw_13"><a href="#" class="wz-11">科研类文书档案查阅</a></li>
+			<li class="fw_13"><a href="#" class="wz-12">学历学位<br>认证</a></li>
+			<li class="fw_13"><a href="#" class="wz-13">其他类文书档案查阅</a></li>
+			<li class="fw_14"><a href="#"></a></li>
+			<li class="fw_13"><a href="#"></a></li>
+			<li class="fw_13"><a href="#"></a></li>
+			<li class="fw_13"><a href="#"></a></li>
+		</ul>
+		<div class="fwpt">
+			<img src="../img/dn.png" class="pt">
+			<span class="pt_1">服务平台</span>
+			<img src="../img/xt2.png" class="pt_2">
+			<div class="pt_3">
+				<a href="#" class="pt_4">档案转递查询平台</a>
+			</div>
+			<div class="pt_5">
+				<a href="#" class="pt_4">档案服务利用平台</a>
+			</div>
+			<div class="pt_6">
+				<a href="#" class="pt_7">档案管理平台</a>
+			</div>
+			<div class="pt_8">
+				<a href="#" class="pt_9-1">手机APP二维码</a>
+			</div>
+			<div class="pt_8">
+				<a href="#" class="pt_9">东师档案微信二维码</a>
+			</div>
+		</div>
+	</div>
+	<div id="lianjie">
+		<a href="#" class="lj"><img src="../img/lianjie.png"></a>
+		<a href="#" class="lj"><img src="../img/lianjie.png"></a>
+		<a href="#" class="lj"><img src="../img/lianjie.png"></a>
+		<a href="#" class="lj1"><img src="../img/lianjie.png" width="355" height="194"></a>
+		<div class="zhuye">
+				<a href="#" class="zytext">访问人数：15人</a>
+				<span>|</span>
+				<a href="#" class="zytext1">学校主页（链接）</a>
+				<span>|</span>
+				<a href="#" class="zytext1">馆内OA</a>
+				<span>|</span>
+				<a href="#" class="zytext1">常见问题（文本）</a>
+				<span>|</span>
+				<a href="#" class="zytext1">相关网站（链接）</a>
+			</div>
+	</div>
+</div>
+<div id="end">
+	<p class="endtext">办公地址：吉林省长春市南关区人民大街5268号东北师范大学行政办公楼（130024）</p>
+	<p class="endtext1">办公时间：周一至周五8:00-11:30，13:30-17:00（周三下午及法定节假日除外，寒暑假开馆时间另行通知）</p>
+	<p class="endtext2">电子邮箱：archives@nenu.edu.cn </p>
+	<p class="endtext3">收集指导部电话：0431-85098670</p>
+	<p class="endtext4">人事档案部电话：0431-85099149</p>
+	<p class="endtext5">技术服务部电话：0431-85099339</p>
+</div>
+</body>
+</html>
